@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Form Mini App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="https://telegram.org/js/telegram-web-app.js"></script>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #ffffff;
+      color: #222;
+      padding: 20px;
+    }
+    input, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      font-size: 16px;
+      border-radius: 8px;
+      border: 1px solid #ccc;
+    }
+    button {
+      background-color: #0088cc;
+      color: white;
+      border: none;
+    }
+  </style>
+</head>
+<body>
+  <h2>Isi Data Anda</h2>
+  <input type="text" id="name" placeholder="Nama Lengkap">
+  <input type="email" id="email" placeholder="Email">
+  <button onclick="submitForm()">Kirim</button>
+
+  <script>
+    const tg = window.Telegram.WebApp;
+    tg.expand();
+
+    function submitForm() {
+      const name = document.getElementById("name").value;
+      const email = document.getElementById("email").value;
+      const data = { name, email };
+
+      tg.sendData(JSON.stringify(data)); // kirim ke bot
+    }
+  </script>
+</body>
+</html>
